@@ -612,7 +612,7 @@ const cars = {
 function setCar(key){
   const c = cars[key];
   document.getElementById("carImage").src = c.img;
-  document.getElementById("engineSound").src = c.sound;
+  document.getElementById("engineSound").src = c.sound + "?v=" + Date.now();
   
 
   document.getElementById("hp").textContent = c.hp;
@@ -635,6 +635,7 @@ function sendSupport(){
 
 </body>
 </html>
+
 
 
 
