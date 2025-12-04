@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dream Garage</title>
+
+<style>
+  html{
+    scroll-behavior: smooth;
+  }
+
+  body{
+    margin:0;
+    background:#000;
+    color:#fff;
+    font-family:Arial, Helvetica, sans-serif;
+    text-align:center;
+  }
+
+  /* -------------------- NAVBAR -------------------- */
+  .navbar{
+    width:100%;
+    padding:20px 0;
+    background:#000;
+    position:fixed;
+    top:0;
+    left:0;
+    display:flex;
+    justify-content:center;
+    gap:30px;
+    z-index:20;
+    border-bottom:1px solid #222;
+  }
+
+  .nav-btn{
+    background:#000;
+    color:#fff;
+    border:none;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    border-radius:999px;
+    padding:10px 20px;
+    box-shadow:0 0 10px 2px rgba(255,255,255,0.25);
+    transition:.15s;
+  }
+
+  .nav-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 14px 3px rgba(255,255,255,0.5);
+  }
+
+  /* -------------------- TITULO -------------------- */
+  h1{
+    font-size:48px;
+    margin-top:120px;
+    margin-bottom:6px;
+  }
+
+  p.sub{
+    color:#ccc;
+    margin-top:0;
+    margin-bottom:40px;
+  }
+
+  /* -------------------- CARRO -------------------- */
+  .car-display{
+    width:600px;
+    max-width:85%;
+    margin:40px auto;
+    display:block;
+    filter:drop-shadow(0 0 20px rgba(255,255,255,0.15));
+  }
+
+  /* -------------------- BOTÕES DE CARRO -------------------- */
+  .buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+  }
+
+  .btn{
+    padding:12px 28px;
+    background:#000;
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 0 12px 3px rgba(255,255,255,0.35);
+    transition:.15s;
+  }
+
+  .btn:hover{
+    transform:scale(1.04);
+    box-shadow:0 0 16px 5px rgba(255,255,255,0.55);
+  }
+
+  /* -------------------- INFO -------------------- */
+  .info-box{
+    margin-top:20px;
+    max-width:600px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    font-size:18px;
+    line-height:1.6;
+  }
+  .info-box span{
+    color:#aaa;
+  }
+
+  /* -------------------- SOM -------------------- */
+  audio{
+    margin-top:20px;
+    width:300px;
+  }
+
+  /* -------------------- SECÇÃO DO VÍDEO -------------------- */
+  iframe{
+    width:90%;
+    max-width:900px;
+    height:450px;
+    border:none;
+    border-radius:12px;
+    margin:40px 0;
+  }
+
+  /* -------------------- SUPORTE -------------------- */
+  .support-box{
+    max-width:500px;
+    margin:50px auto;
+    text-align:left;
+    background:#111;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 0 12px rgba(255,255,255,0.15);
+  }
+
+  .support-box input,
+  .support-box textarea{
+    width:100%;
+    padding:10px;
+    margin-top:10px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+  }
+
+  .support-btn{
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    border:none;
+    background:#fff;
+    color:#000;
+    font-weight:800;
+    border-radius:8px;
+    cursor:pointer;
+  }
+</style>
+
+</head>
+<body>
+
+<!-- ================== NAVBAR ================== -->
+<div class="navbar">
+  <button class="nav-btn" onclick="location='#garagem'">Garagem</button>
+  <button class="nav-btn" onclick="location='#formulario'">Formulário</button>
+  <button class="nav-btn" onclick="location='#agenda'">Agenda</button>
+  <button class="nav-btn" onclick="location='#suporte'">Suporte</button>
+</div>
+
+<!-- ================== SEÇÃO GARAGEM ================== -->
+<section id="garagem">
+
+  <h1>My Dream Garage</h1>
+  <p class="sub">Feito por Júlio Mendes</p>
+
+  <img id="carImage" class="car-display" src="cars/gtr.png">
+
+  <div class="buttons">
+    <button class="btn" onclick="setCar('gtr')">Nissan GTR R35</button>
+    <button class="btn" onclick="setCar('m4')">BMW M4 G82</button>
+    <button class="btn" onclick="setCar('senna')">McLaren Senna</button>
+    <button class="btn" onclick="setCar('amg')">AMG GT R</button>
+  </div>
+
+  <div class="audio-wrapper">
+  <audio id="engineSound" controls src="sounds/gtr.wav"></audio>
+</div>
+
+
+  <div class="info-box">
+    <p><b>Cavalagem:</b> <span id="hp">565 hp</span></p>
+    <p><b>Motor:</b> <span id="engine">V6 3.8L Twin-Turbo</span></p>
+    <p><b>Velocidade Máxima:</b> <span id="vmax">315 km/h</span></p>
+    <p><b>Preço:</b> <span id="price">€120 000</span></p>
+    <p><b>0-100 km/h:</b> <span id="accel">2.9 s</span></p>
+    <p><b>Tração:</b> <span id="drive">AWD</span></p>
+    <p><b>Cilindrada:</b> <span id="disp">3799 cc</span></p>
+    <p><b>Combustível:</b> <span id="fuel">Gasolina</span></p>
+  </div>
+
+  <h2 style="margin-top:60px;"></h2>
+  
+
+</section>
+
+<!-- ================== SEÇÃO FORMULÁRIO ================== -->
+<section id="formulario"
+  style="max-width: 600px; margin: 40px auto; padding: 20px; 
+         font-family: Arial; color: white; text-align: center;">
+
+  <h1 style="margin-bottom: 20px; text-shadow:0 0 10px #000;">Formulário</h1>
+
+  <form
+    action="mailto:julio.tomas.mendes@espinhalnovo.org?subject=Novo%20contacto%20do%20site"
+    method="post"
+    enctype="text/plain"
+    style="display: flex; flex-direction: column; gap: 14px; 
+           padding: 25px; background:#111; border-radius:15px;
+           box-shadow:0 0 25px #000;"
+  >
+
+    <h3 style="margin-bottom:10px; text-shadow:0 0 8px #000;">Fala comigo sobre o teu carro favorito</h3>
+
+    <!-- ESTILO DOS INPUTS -->
+    <style>
+      .darkInput {
+        width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid #444;
+        background: #222;
+        color: white;
+        box-shadow: inset 0 0 8px #000;
+        transition: 0.2s;
+      }
+
+      .darkInput:focus {
+        outline: none;
+        border-color: #0f0;
+        box-shadow: 0 0 10px #0f0;
+      }
+
+      .darkButton {
+        padding: 12px;
+        border-radius: 14px;
+        border: none;
+        background: #1a1a1a;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        box-shadow: 0 0 15px #000;
+        transition: 0.2s;
+      }
+
+      .darkButton:hover {
+        background: #333;
+        box-shadow: 0 0 12px #0f0;
+      }
+    </style>
+
+    <label style="text-align:left;">Nome</label>
+    <input class="darkInput" type="text" id="nome" name="Nome" placeholder="O teu nome" required>
+
+    <label style="text-align:left;">Email</label>
+    <input class="darkInput" type="email" id="email" name="Email" placeholder="teuemail@gmail.com" required>
+
+    <label style="text-align:left;">Carro favorito</label>
+    <input class="darkInput" type="text" id="carro" name="Carro favorito" placeholder="Ex: Nissan GT-R" required>
+
+    <label style="text-align:left;">Ano do modelo</label>
+    <input class="darkInput" type="number" id="ano" name="Ano do modelo"
+           min="1900" max="2050" placeholder="Ex: 2012">
+
+    <label style="text-align:left;">Porquê?</label>
+    <textarea class="darkInput" id="motivo" name="Motivo" rows="4"
+              placeholder="Porque curtes esse carro?"></textarea>
+
+    <!-- BOTÃO DARK -->
+    <button class="darkButton" type="submit">Enviar Email</button>
+
+  </form>
+</section>
+
+
+
+<!-- ================== SEÇÃO AGENDA ================== -->
+
+<section id="calendario" style="max-width: 900px; margin: 40px auto; font-family: Arial; color: white;">
+
+  <h1 style="text-align: center; margin-bottom: 20px; color:white; text-shadow:0 0 10px #000;">📅 Calendário & Agenda</h1>
+
+  <!-- HEADER DO CALENDÁRIO -->
+  <div style="display:flex; justify-content: space-between; align-items:center; margin-bottom:15px;">
+
+    <button onclick="prevMonth()" 
+      style="padding:10px 18px; background:#111; border:1px solid #555; color:white; 
+             border-radius:12px; cursor:pointer; box-shadow:0 0 10px #000;">
+      ⬅
+    </button>
+
+    <h2 id="monthName" style="color:white; text-shadow:0 0 8px #000;"></h2>
+
+    <button onclick="nextMonth()" 
+      style="padding:10px 18px; background:#111; border:1px solid #555; color:white; 
+             border-radius:12px; cursor:pointer; box-shadow:0 0 10px #000;">
+      ➡
+    </button>
+
+  </div>
+
+  <!-- CALENDÁRIO -->
+  <div id="calendar"
+       style="display:grid; grid-template-columns: repeat(7, 1fr); gap:8px;">
+  </div>
+
+  <!-- LISTA DE EVENTOS -->
+  <h3 style="margin-top: 30px; color:white;">📝 Eventos agendados</h3>
+  <ul id="eventList" style="padding-left:20px; line-height: 1.7;"></ul>
+</section>
+
+<!-- MODAL DARK -->
+<div id="eventModal" 
+     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+            background:rgba(0,0,0,0.75); justify-content:center; align-items:center;">
+  
+  <div style="background:#1a1a1a; width:350px; padding:20px; border-radius:12px; 
+              box-shadow:0 0 25px #000; color:white;">
+    <h2 id="modalDate" style="text-align:center; margin-bottom:15px;"></h2>
+
+    <label>Hora:</label>
+    <input id="eventTime" type="time"
+      style="width:100%; padding:8px; border-radius:10px; background:#333; border:1px solid #555; color:white; margin-bottom:10px;">
+
+    <label>Descrição:</label>
+    <input id="eventText" type="text" placeholder="Ex: Revisão do carro"
+      style="width:100%; padding:8px; border-radius:10px; background:#333; border:1px solid #555; color:white; margin-bottom:12px;">
+
+    <div style="display:flex; justify-content: space-between; margin-top:10px;">
+      <button onclick="saveEvent()" 
+        style="padding:10px 15px; background:#0a7a0a; border:none; border-radius:10px; color:white;">
+        Guardar
+      </button>
+
+      <button onclick="closeModal()" 
+        style="padding:10px 15px; background:#444; border:none; border-radius:10px; color:white;">
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let events = {};
+  let date = new Date();
+
+  const calendar = document.getElementById("calendar");
+  const modal = document.getElementById("eventModal");
+  const modalDateText = document.getElementById("modalDate");
+  const eventText = document.getElementById("eventText");
+  const eventTime = document.getElementById("eventTime");
+  const eventList = document.getElementById("eventList");
+  const monthName = document.getElementById("monthName");
+
+  let selectedFullDate = "";
+
+  function loadCalendar() {
+    calendar.innerHTML = "";
+
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    monthName.textContent = date.toLocaleString("pt-PT", { month: "long", year: "numeric" });
+
+    const firstDay = new Date(year, month, 1).getDay();
+    const lastDay = new Date(year, month + 1, 0).getDate();
+
+    const weekDays = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+
+    weekDays.forEach(d => {
+      const div = document.createElement("div");
+      div.textContent = d;
+      div.style.fontWeight = "bold";
+      div.style.textAlign = "center";
+      div.style.padding = "10px 0";
+      div.style.background = "#222";
+      div.style.borderRadius = "10px";
+      div.style.color = "#ccc";
+      calendar.appendChild(div);
+    });
+
+    for (let i = 0; i < firstDay; i++) {
+      calendar.appendChild(document.createElement("div"));
+    }
+
+    for (let day = 1; day <= lastDay; day++) {
+      const cell = document.createElement("div");
+      cell.textContent = day;
+      cell.style.padding = "14px";
+      cell.style.textAlign = "center";
+      cell.style.borderRadius = "12px";
+      cell.style.background = "#111";
+      cell.style.color = "#ddd";
+      cell.style.border = "1px solid #333";
+      cell.style.cursor = "pointer";
+      cell.style.transition = "0.2s";
+
+      cell.onmouseover = () => cell.style.background = "#222";
+      cell.onmouseout = () => cell.style.background = "#111";
+
+      const today = new Date();
+      if (
+        day === today.getDate() &&
+        month === today.getMonth() &&
+        year === today.getFullYear()
+      ) {
+        cell.style.background = "#0d4";  // verde suave
+        cell.style.color = "black";
+        cell.style.fontWeight = "bold";
+      }
+
+      cell.onclick = () => openModal(day, month, year);
+
+      calendar.appendChild(cell);
+    }
+  }
+
+  function openModal(day, month, year) {
+    selectedFullDate = `${day}/${month + 1}/${year}`;
+    modalDateText.textContent = "Agendar para " + selectedFullDate;
+    eventText.value = "";
+    eventTime.value = "";
+    modal.style.display = "flex";
+  }
+
+  function closeModal() {
+    modal.style.display = "none";
+  }
+
+  function saveEvent() {
+    const text = eventText.value.trim();
+    const time = eventTime.value.trim();
+
+    if (!text || !time) return;
+
+    if (!events[selectedFullDate]) events[selectedFullDate] = [];
+    events[selectedFullDate].push({ text, time });
+
+    closeModal();
+    updateEventList();
+  }
+
+  function updateEventList() {
+    eventList.innerHTML = "";
+
+    Object.keys(events).forEach(date => {
+      events[date].forEach(ev => {
+        const li = document.createElement("li");
+        li.innerHTML = `<b>${date}</b> - <span style="color:#0f0">${ev.time}</span> ➜ ${ev.text}`;
+        eventList.appendChild(li);
+      });
+    });
+  }
+
+  function prevMonth() { date.setMonth(date.getMonth() - 1); loadCalendar(); }
+  function nextMonth() { date.setMonth(date.getMonth() + 1); loadCalendar(); }
+
+  loadCalendar();
+</script>
+
+
+<!-- ================== SEÇÃO SUPORTE ================== -->
+<section id="suporte"
+  style="max-width: 600px; margin: 40px auto; padding: 20px; 
+         font-family: Arial; color: white; text-align: center;">
+
+  <h1 style="margin-bottom: 20px; text-shadow:0 0 10px #000;">Suporte</h1>
+
+  <form
+    action="mailto:julio.tomas.mendes@espinhalnovo.org?subject=Pedido%20de%20Suporte"
+    method="post"
+    enctype="text/plain"
+    style="display: flex; flex-direction: column; gap: 14px; 
+           padding: 25px; background:#111; border-radius:15px;
+           box-shadow:0 0 25px #000;"
+  >
+
+    <h3 style="margin-bottom:10px; text-shadow:0 0 8px #000;">Como posso ajudar?</h3>
+
+    <!-- ESTILO COMPARTILHADO DOS FORMS -->
+    <style>
+      .darkInput {
+        width: 100%;
+        padding: 5px;
+        border-radius: 12px;
+        border: 1px solid #444;
+        background: #222;
+        color: white;
+        box-shadow: inset 0 0 8px #000;
+        transition: 0.2s;
+      }
+
+      .darkInput:focus {
+        outline: none;
+        border-color: #0f0;
+        box-shadow: 0 0 10px #0f0;
+      }
+
+      .darkButton {
+        padding: 12px;
+        border-radius: 14px;
+        border: none;
+        background: #1a1a1a;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        box-shadow: 0 0 15px #000;
+        transition: 0.2s;
+      }
+
+      .darkButton:hover {
+        background: #333;
+        box-shadow: 0 0 12px #0f0;
+      }
+    </style>
+
+    <!-- CAMPOS -->
+    <label style="text-align:left;">Nome</label>
+    <input class="darkInput" type="text" name="Nome" placeholder="O teu nome" required>
+
+    <label style="text-align:left;">Email</label>
+    <input class="darkInput" type="email" name="Email" placeholder="teuemail@gmail.com" required>
+
+    <label style="text-align:left;">Assunto</label>
+    <input class="darkInput" type="text" name="Assunto" placeholder="Ex: Problema no site" required>
+
+    <label style="text-align:left;">Mensagem</label>
+    <textarea class="darkInput" name="Mensagem" rows="5"
+              placeholder="Explica o que está a acontecer…" required></textarea>
+
+    <!-- BOTÃO -->
+    <button class="darkButton" type="submit">Enviar Pedido de Suporte</button>
+
+  </form>
+</section>
+
+
+<script>
+/* ================== BASE DE DADOS DOS CARROS ================== */
+const cars = {
+  gtr:{
+    img:"cars/gtr.png",
+    sound:"sounds/gtr.mp3",
+    video:"https://www.youtube.com/embed/0Ug4jMC2JpY",
+    hp:"565 hp",
+    engine:"V6 3.8L Twin-Turbo",
+    vmax:"315 km/h",
+    price:"€120 000",
+    accel:"2.9 s",
+    drive:"AWD",
+    disp:"3799 cc",
+    fuel:"Gasolina"
+  },
+  m4:{
+    img:"cars/m4.png",
+    sound:"sounds/m4.mp3",
+    video:"https://www.youtube.com/embed/w2h9y5Zg9Kw",
+    hp:"510 hp",
+    engine:"L6 3.0L Twin-Turbo",
+    vmax:"290 km/h",
+    price:"€120 000",
+    accel:"3.9 s",
+    drive:"RWD",
+    disp:"2993 cc",
+    fuel:"Gasolina"
+  },
+  senna:{
+    img:"cars/senna.png",
+    sound:"sounds/senna.mp3",
+    video:"https://www.youtube.com/embed/8AM6uZYb1wY",
+    hp:"800 hp",
+    engine:"V8 4.0 Twin-Turbo",
+    vmax:"340 km/h",
+    price:"€1 000 000",
+    accel:"2.7 s",
+    drive:"RWD",
+    disp:"3994 cc",
+    fuel:"Gasolina"
+  },
+  amg:{
+    img:"cars/amg.png",
+    sound:"sounds/amg.mp3",
+    video:"https://www.youtube.com/embed/xEZ1onbXrHc",
+    hp:"585 hp",
+    engine:"V8 4.0 Twin-Turbo",
+    vmax:"318 km/h",
+    price:"€200 000",
+    accel:"3.6 s",
+    drive:"RWD",
+    disp:"3982 cc",
+    fuel:"Gasolina"
+  }
+};
+
+/* ================== FUNÇÃO PARA TROCAR O CARRO ================== */
+function setCar(key){
+  const c = cars[key];
+  document.getElementById("carImage").src = c.img;
+  document.getElementById("engineSound").src = c.sound;
+  document.getElementById("videoFrame").src = c.video;
+
+  document.getElementById("hp").textContent = c.hp;
+  document.getElementById("engine").textContent = c.engine;
+  document.getElementById("vmax").textContent = c.vmax;
+  document.getElementById("price").textContent = c.price;
+  document.getElementById("accel").textContent = c.accel;
+  document.getElementById("drive").textContent = c.drive;
+  document.getElementById("disp").textContent = c.disp;
+  document.getElementById("fuel").textContent = c.fuel;
+
+  window.scrollTo({top:0, behavior:"smooth"});
+}
+
+/* ================== SUPORTE ================== */
+function sendSupport(){
+  alert("Obrigado pelo teu feedback!");
+}
+</script>
+
+</body>
+</html>
